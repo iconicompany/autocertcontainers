@@ -15,7 +15,7 @@ else
     step ca certificate --not-after $DURATION $COMMON_NAME $CRT $KEY
 fi
 
-step certificate p12 $:vP12 $CRT $KEY --no-password --insecure
+step certificate p12 $P12 $CRT $KEY --no-password --insecure
 
 step ca root $STEP_ROOT
 
