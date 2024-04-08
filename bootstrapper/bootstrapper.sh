@@ -1,5 +1,4 @@
 #!/bin/sh
-P12="/var/run/autocert.step.sm/site.p12"
 
 if [ -f "$STEP_ROOT" ];
 then
@@ -8,6 +7,8 @@ then
 fi
 
 # Download the root certificate and set permissions
+step ca root $STEP_ROOT
+
 if [ "$DURATION" == "" ];
 then
     step ca certificate $COMMON_NAME $CRT $KEY
@@ -15,9 +16,7 @@ else
     step ca certificate --not-after $DURATION $COMMON_NAME $CRT $KEY
 fi
 
-step certificate p12 $P12 $CRT $KEY --no-password --insecure
-
-step ca root $STEP_ROOT
+step certificate p12 $P12 $CRT $KEY --no-password --insecure --force
 
 if [ -n "$OWNER" ]
 then
