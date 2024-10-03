@@ -20,13 +20,13 @@ step certificate p12 $P12 $CRT $KEY --no-password --insecure --force
 
 if [ -n "$OWNER" ]
 then
-    chown "$OWNER" $CRT $KEY $STEP_ROOT $P12
+    chown "$OWNER" $CRT $KEY $STEP_ROOT $P12 $PEM
 fi
 
 if [ -n "$MODE" ]
 then
-    chmod "$MODE" $CRT $KEY $STEP_ROOT $P12
+    chmod "$MODE" $CRT $KEY $STEP_ROOT $P12 $PEM
 else
-    chmod 644 $CRT $KEY $STEP_ROOT $P12
+    chmod 644 $CRT $KEY $STEP_ROOT $P12 $PEM
 fi
 
